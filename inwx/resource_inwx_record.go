@@ -6,7 +6,7 @@ import (
 
 	"strconv"
 
-	"github.com/andrexus/goinwx"
+	"github.com/nrdcg/goinwx"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
@@ -70,7 +70,7 @@ func resourceINWXRecordCreate(d *schema.ResourceData, meta interface{}) error {
 	}
 
 	if val, ok := d.GetOk("ttl"); ok {
-		newRecord.Ttl = val.(int)
+		newRecord.TTL = val.(int)
 	}
 
 	if val, ok := d.GetOk("priority"); ok {
@@ -99,7 +99,7 @@ func resourceINWXRecordRead(d *schema.ResourceData, meta interface{}) error {
 		return fmt.Errorf("Couldn't convert %s to int", d.Id())
 	}
 
-	rec, domain, err := client.Nameservers.FindRecordById(recId)
+	rec, domain, err := client.Nameservers.FindRecordByID(recId)
 
 	if err != nil {
 		return err
@@ -109,8 +109,8 @@ func resourceINWXRecordRead(d *schema.ResourceData, meta interface{}) error {
 	d.Set("name", rec.Name)
 	d.Set("type", rec.Type)
 	d.Set("value", rec.Content)
-	d.Set("ttl", rec.Ttl)
-	d.Set("priority", rec.Prio)
+	d.Set("ttl", rec.TTL)
+	d.Set("priority", rec.Priority)
 
 	return nil
 }
@@ -138,7 +138,7 @@ func resourceINWXRecordUpdate(d *schema.ResourceData, meta interface{}) error {
 	}
 
 	if attr, ok := d.GetOk("ttl"); ok {
-		updateRecord.Ttl = attr.(int)
+		updateRecord.TTL = attr.(int)
 	}
 
 	log.Printf("[DEBUG] INWX Record update configuration: %#v", updateRecord)

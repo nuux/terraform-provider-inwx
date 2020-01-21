@@ -4,7 +4,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/andrexus/goinwx"
+	"github.com/nrdcg/goinwx"
 )
 
 type Config struct {
