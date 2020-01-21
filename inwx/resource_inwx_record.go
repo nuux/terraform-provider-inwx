@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/andrexus/goinwx"
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
 func resourceINWXRecord() *schema.Resource {
