@@ -12,19 +12,14 @@ With this custom terraform provider plugin you can manage your INWX domains.
 This plugin is currently not yet part of the official list of [terraform-providers](https://github.com/terraform-providers),
 therefore you have to install it manually:
 
-1. [Download](https://github.com/andrexus/terraform-provider-inwx/releases) the
+1. [Download](https://github.com/tobi-grins/terraform-provider-inwx/releases) the
    compiled plugin and make the file executable (`chmod +x terraform-provider-inwx`).  
    Or if you have Go installed:
     ```
-    go get github.com/andrexus/terraform-provider-inwx
-    go install github.com/andrexus/terraform-provider-inwx
+    go get github.com/tobi-grins/terraform-provider-inwx
+    go install github.com/tobi-grins/terraform-provider-inwx
     ```
-2. Add plugin binary to your ~/.terraformrc file
-    ```
-    providers {
-       inwx = "/path/to/your/bin/terraform-provider-inwx"
-    }
-    ```
+2. Copy the plugin binary into your `~/.terraform.d/plugins` directory
 
 ### Provider Configuration
 
